@@ -14,7 +14,7 @@ int main(){
     /* fazer vetor das linhas do entrada.txt para retornar iddoc em função */
 
     if(entrada == NULL){
-		  printf("Não foi possivel abrir o arquivo\n");
+		  printf("Não foi possível abrir o arquivo\n");
 		  return 0;
 	  }
     fscanf(entrada, "%d\n", &N);
@@ -23,7 +23,7 @@ int main(){
         fscanf(entrada, "%s", nomeArq); 
         arquivo = fopen(nomeArq, "r");
         if(arquivo == NULL){
-		      printf("Não foi possivel abrir o arquivo\n");
+		      printf("Não foi possível abrir o arquivo\n");
 		      return 0;
 	      }
         while (!feof(arquivo)){
