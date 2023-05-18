@@ -7,11 +7,11 @@ void tratamentoDePalavras(char *palavra);
 
 int main(){
     FILE *arquivo = fopen("arquivo1.txt", "r");
-    char palavra[100];
+    char palavra[50];
     char *ptr_palavra;
 
     if(arquivo == NULL){
-		  printf("Nao foi possivel abrir o arquivo\n");
+		  printf("Não foi possivel abrir o arquivo\n");
 		  return 0;
 	  }
 
@@ -31,13 +31,13 @@ void tratamentoDePalavras(char *palavra){
   int i;  
   int ascii;  
   for (i = 0; i < strlen(palavra); i++){
-    // tolower funciona em caracter
+    // tolower funciona em caractere
     palavra[i] = tolower(palavra[i]);
 
     //transforma a palavra para um valor na tabela ascii
     ascii = (int)palavra[i];
     if (ascii < 97 || ascii > 122){
-      //caso o caracter nao esteja entre a e z minusculos, ele coloca como fim de string
+      //caso o caracter não esteja entre a e z minúsculos, ele coloca como fim de string
       palavra[i] = '\0';
     }
   }
