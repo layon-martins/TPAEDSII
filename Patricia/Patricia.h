@@ -16,7 +16,7 @@ typedef char String[50];
 typedef short boolean;
 
 typedef enum{
-  Interno, Externo
+    Interno, Externo
 }TipoNo;
 
 typedef struct NoPatricia *Aptd_Pat;
