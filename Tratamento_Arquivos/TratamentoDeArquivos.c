@@ -9,42 +9,53 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h> // para usar a função tolower
+#include <ctype.h>
 
-void tratamentoDePalavras(char *palavra);
+#include "TratamentoDeArquivos.h"
+#include "../Patricia/Patricia.h"
 
-int main(){
-    FILE *entrada = fopen("entrada.txt", "r");
-    FILE *arquivo;
-    int N;
+void lerPalavras(Aptd_Pat *A) {
+
+    int N, i, idDoc;
     char nomeArq[50];
     char palavra[50];
-    /* fazer vetor das linhas do entrada.txt para retornar iddoc em função */
+    
+    FILE *entrada = fopen("entrada.txt", "r");
+    FILE *arquivo;
 
     if(entrada == NULL){
-		  printf("Não foi possível abrir o arquivo\n");
-		  return 0;
-	  }
+		printf("Não foi possível abrir o arquivo de entrada\n");
+        return;
+    }
+
     fscanf(entrada, "%d\n", &N);
 
-    for (int i = 0; i< N; i++){   
+    // gera um vetor de idDoc para o indice invertido
+    int vetorIdDoc[N]; 
+    for(i = 0;i<N;i++){
+        vetorIdDoc[i] += 1;
+    }
+
+    for (i = 0; i< N; i++){   
         fscanf(entrada, "%s", nomeArq); 
         arquivo = fopen(nomeArq, "r");
+        idDoc = vetorIdDoc[i];
+
         if(arquivo == NULL){
-		      printf("Não foi possível abrir o arquivo\n");
-		      return 0;
-	      }
+            printf("Não foi possível abrir o arquivo\n");
+            return;
+        }
         while (!feof(arquivo)){
-          fscanf(arquivo, "%s", palavra); 
-          tratamentoDePalavras(palavra);
-          printf("%s\n", palavra);
+            fscanf(arquivo, "%s", palavra); 
+            tratamentoDePalavras(palavra);
+
+            InserePatricia(palavra, A, idDoc);
         }
         fclose(arquivo);
     }
+
     fclose(entrada);
-
-    return 0;
-
+    
 }
 
 void tratamentoDePalavras(char *palavra){

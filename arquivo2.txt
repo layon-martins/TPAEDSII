@@ -1,0 +1,15 @@
+improving rule based and equivalent decision simplifications 
+for bloat control in genetic programming using a dynamic operator 
+bloat is a common issue regarding genetic programming (gp), specially noted 
+in symbolic regression (sr) problems. due to this, gp tends to generate a huge 
+amount of ineffective code that could be avoided or removed. code editing is one 
+of many approaches to avoid bloat. the objective in this strategy is to mutate or 
+remove subtrees which do not contribute to the final solution. two known methods of 
+redundant code removal, the rule based simplification (rbs) and equivalent decision 
+simplification (eds) are extended in a new operator presented in this paper, called 
+dynamic operator with rbs and eds (dore). this operator gives the algebraic 
+simplification table used byrbs the potential to learn from reductions performed by eds. 
+an initial benchmark highlighted how the rbs table can grow as much as 86% with dore, and 
+reducing the time spent on simplification by 16.83%. experiments with the other three sr problems were performed showing
+a considerable improvement on fitness of the generated programs, besides a 
+slight reduction in the population of the average tree size.
