@@ -27,7 +27,7 @@ typedef struct NoPatricia{
         struct{
             short Index;
             char Caractere;
-            Aptd_Arvore Esq, Dir;
+            Aptd_Pat Esq, Dir;
         }NInterno;
         String Chave;
         //Indice Invertido aqui
