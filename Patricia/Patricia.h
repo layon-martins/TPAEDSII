@@ -39,6 +39,7 @@ Aptd_Pat InsereEntre(String S, Aptd_Pat *A, int i, int idDoc);
 Aptd_Pat CriaNoExt(String S, int idDoc);
 Aptd_Pat CriaNoInt(short i, Aptd_Pat *Esq,  Aptd_Pat *Dir, char Caractere);
 Aptd_Pat*AchaNoExterno(Aptd_Pat *A);
+Aptd_Pat Pesquisa(String S, Aptd_Pat A);
 char AchaLetra(Aptd_Pat *A, int i, String Palavra);
 boolean EExterno(Aptd_Pat A);
 boolean ComparaLetra(int i, char letra, String S);
