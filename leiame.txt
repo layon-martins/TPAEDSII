@@ -1,5 +1,6 @@
 TP 01 Algoritmos e Estruturas de Dados II
 
-Ana Carolina - 5094
-Layon Martins - 4220
+Ana Carolina Fernandes - 5094
 Bárbara Pagnocca - 5061
+Jéssica Cristina Carvalho - 4686
+Layon Fonseca Martins - 4220
