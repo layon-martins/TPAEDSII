@@ -6,9 +6,13 @@
  * Layon Fonseca Martins - 4220
 */
 
+#ifndef PATRICIA_H
+#define PATRICIA_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #define TRUE 1
 #define FALSE 0
 
@@ -30,7 +34,7 @@ typedef struct NoPatricia{
             Aptd_Pat Esq, Dir;
         }NInterno;
         String Chave;
-        //Indice Invertido aqui
+        Lista_Indice listaIndiceInvertido;
     }NO;
 }NoPatricia;
 
@@ -46,3 +50,5 @@ boolean ComparaLetra(int i, char letra, String S);
 int Indice(String S, String P, int tam);
 int ComparaChaves(String S, String P);
 void ImprimeEmOrdem(Aptd_Pat A);
+
+#endif

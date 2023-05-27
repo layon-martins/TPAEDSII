@@ -7,7 +7,7 @@
 
 void tratamentoDePalavras(char *palavra);
 
-void lerPalavras(Lista_Indice *lista);
+void lerPalavras(Aptd_Pat *A);
 
 
 #endif

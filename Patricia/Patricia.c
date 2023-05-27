@@ -6,6 +6,7 @@
  * Layon Fonseca Martins - 4220
 */
 
+#include "../Indice_Invertido/IndiceInvertido.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -57,11 +58,19 @@ Aptd_Pat CriaNoInt(short i, Aptd_Pat *Esq, Aptd_Pat *Dir, char Caractere){
 }
 
 Aptd_Pat CriaNoExt(String S, int idDoc){
+
+    printf("Chave: %s\n",S);
+
     Aptd_Pat N;
+    Lista_Indice lista;
+    FLVazia(&lista);
     N = (Aptd_Pat)malloc(sizeof(NoPatricia));
     N->nt = Externo;
+    //printf("NO EXTERNO: %s\n", (N)->NO.Chave);
     strcpy(N->NO.Chave,S);
-    //Inicializar lista de indice invertido aqui                  
+    InsereLista(idDoc, &lista);
+    N->NO.listaIndiceInvertido = lista;
+    //printf("NO EXTERNO: %s\n", (N)->NO.Chave);
     return N;
 }
 
@@ -84,6 +93,7 @@ Aptd_Pat InsereEntre(String S, Aptd_Pat *A, int i, int idDoc){
 }
 
 Aptd_Pat InserePatricia(String S, Aptd_Pat *t, int idDoc){
+    //printf("String que chega na InserePatricia: %s\n", S);
     Aptd_Pat *p;
     int i;
     if(*t == NULL)return (CriaNoExt(S, idDoc));
@@ -129,7 +139,7 @@ void ImprimeEmOrdem(Aptd_Pat A){
     }
     if(EExterno(A)){
         printf("\n%s", A->NO.Chave);
-        //usar aqui funcao de printar a lista de indices invertidos
+        //ImprimeIndice(A->NO.listaIndiceInvertido);
     }
     else{
         if(A->NO.NInterno.Esq != NULL)ImprimeEmOrdem(A->NO.NInterno.Esq);

@@ -23,11 +23,11 @@ typedef struct{
 
 void FLVazia(Lista_Indice *lista);
 
-void InsereLista(int quant, int idDoc, Lista_Indice *lista);
+void InsereLista(int idDoc, Lista_Indice *lista);
 
-void Imprime(Lista_Indice lista);
+void ImprimeIndice(Lista_Indice lista);
 
-void IncrementaQuantidade(Lista_Indice *lista, int idDoc)
+void IncrementaQuantidade(Lista_Indice lista, int idDoc);
 
 
 #endif

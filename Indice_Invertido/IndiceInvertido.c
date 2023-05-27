@@ -19,21 +19,23 @@ void InsereLista(int idDoc, Lista_Indice *lista){
     lista->ultimo->proximo = NULL;
 }
 
-void Imprime(Lista_Indice lista){
+void ImprimeIndice(Lista_Indice lista){
     Apontador aux;
     aux = lista.primeiro->proximo;
     while(aux != NULL){
-        printf("Documento: %d\n", aux->idDocumento);
+        printf("Quantidade: %d\n", aux->quantidade);
+        printf("idDoc: %d\n", aux->idDocumento);
+
         aux = aux->proximo;
     }
 }
 
-void IncrementaQuantidade(Lista_Indice *lista, int idDoc){
+void IncrementaQuantidade(Lista_Indice lista, int idDoc){
     Apontador aux;
     aux = lista.primeiro->proximo;
     while(aux != NULL){
-        if(aux->idDoc == idDoc)
-            aux->quant = aux->quant + 1;
+        if(aux->idDocumento == idDoc)
+            aux->quantidade = aux->quantidade + 1;
         aux = aux->proximo;
     }
 
