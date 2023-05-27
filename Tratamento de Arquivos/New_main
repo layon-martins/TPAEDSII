@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h> // para usar a função tolower
+#include "Patricia.h"
 
 void tratamentoDePalavras(char *palavra);
 
@@ -29,7 +30,7 @@ int main()
 
 		scanf("%d",&opcao);
 
-		switch (ocpao)
+		switch (opcao)
 		{
 		case (1):
 			printf("\n Nome do arquivo:");
