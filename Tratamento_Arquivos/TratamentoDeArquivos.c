@@ -16,46 +16,49 @@
 
 void lerPalavras(Aptd_Pat *A) {
 
-    int N, i, idDoc;
-    char nomeArq[50];
-    char palavra[50];
-    
-    FILE *entrada = fopen("entrada.txt", "r");
-    FILE *arquivo;
+  FILE *entrada = fopen("../entrada.txt", "r");
+  FILE *arquivo;
+  int N = 0;
+  int idDoc;
+  char nomeArq[50];
+  char palavra[50];
 
-    if(entrada == NULL){
-		printf("Não foi possível abrir o arquivo de entrada\n");
-        return;
-    }
 
+  if(entrada == NULL){
+		printf("Nao foi possivel abrir o arquivo de entrada\n");
+	} else {
     fscanf(entrada, "%d\n", &N);
 
-    // gera um vetor de idDoc para o indice invertido
-    int vetorIdDoc[N]; 
-    for(i = 0;i<N;i++){
-        vetorIdDoc[i] += 1;
+    int *vetorIdDoc = (int*) malloc(N * sizeof(int)); 
+
+    for(int i = 0;i<N;i++){
+        vetorIdDoc[i] = i;
     }
 
-    for (i = 0; i< N; i++){   
+    for (int i = 0; i< N; i++){   
         fscanf(entrada, "%s", nomeArq); 
         arquivo = fopen(nomeArq, "r");
-        idDoc = vetorIdDoc[i];
+        idDoc = vetorIdDoc[i] + 1;
+      
 
-        if(arquivo == NULL){
-            printf("Não foi possível abrir o arquivo\n");
-            return;
-        }
-        while (!feof(arquivo)){
-            fscanf(arquivo, "%s", palavra); 
-            tratamentoDePalavras(palavra);
-
-            InserePatricia(palavra, A, idDoc);
-        }
-        fclose(arquivo);
+      for (int i = 0; i< N; i++){   
+          fscanf(entrada, "%s", nomeArq); 
+          arquivo = fopen(nomeArq, "r");
+          if(arquivo == NULL){
+            printf("Nao foi possivel abrir o arquivo\n");
+          } else {
+            while (!feof(arquivo)){
+              fscanf(arquivo, "%s", palavra); 
+              tratamentoDePalavras(palavra);
+                
+              *A = InserePatricia(palavra, A, idDoc);
+            }
+            fclose(arquivo);
+          }
+      }
+      fclose(entrada);
     }
-
-    fclose(entrada);
-    
+  }
 }
 
 void tratamentoDePalavras(char *palavra){

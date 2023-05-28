@@ -3,14 +3,14 @@
 #include <string.h>
 
 
-#include "../Tratamento_Arquivos/TratamentoDeArquivos.h"
-#include "../Patricia/Patricia.h"
+#include "../Tratamento_Arquivos/TratamentoDeArquivos.c"
+#include "../Patricia/Patricia.c"
 
 
 
 int main(){
 
-    Aptd_Pat A;
+    Aptd_Pat A = NULL;
 
     lerPalavras(&A);
     ImprimeEmOrdem(A);
