@@ -16,7 +16,7 @@
 
 void lerPalavras(Aptd_Pat *A) {
 
-  FILE *entrada = fopen("../entrada.txt", "r");
+  FILE *entrada = fopen("entrada.txt", "r");
   FILE *arquivo;
   int N = 0;
   int idDoc;

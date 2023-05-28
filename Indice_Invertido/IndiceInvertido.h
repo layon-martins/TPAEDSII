@@ -27,7 +27,7 @@ void InsereLista(int idDoc, Lista_Indice *lista);
 
 void ImprimeIndice(Lista_Indice lista);
 
-void IncrementaQuantidade(Lista_Indice lista, int idDoc);
+void IncrementaQuantidade(int idDoc, Lista_Indice lista);
 
 
 #endif

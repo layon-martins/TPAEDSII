@@ -3,8 +3,8 @@
 #include <string.h>
 
 
-#include "../Tratamento_Arquivos/TratamentoDeArquivos.c"
-#include "../Patricia/Patricia.c"
+#include "../Tratamento_Arquivos/TratamentoDeArquivos.h"
+#include "../Patricia/Patricia.h"
 
 
 

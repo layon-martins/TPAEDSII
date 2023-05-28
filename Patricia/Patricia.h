@@ -34,8 +34,9 @@ typedef struct NoPatricia{
             Aptd_Pat Esq, Dir;
         }NInterno;
         String Chave;
+        //Lista_Indice listaIndiceInvertido;
     }NO;
-    Lista_Indice listaIndiceInvertido;
+    
 }NoPatricia;
 
 Aptd_Pat InserePatricia(String S, Aptd_Pat *A, int idDoc);
