@@ -137,12 +137,12 @@ void ImprimeEmOrdem(Aptd_Pat A){
         printf("\nArvore vazia.");
         return;
     }
-    if(EExterno(A)){
-        printf("\n%s", A->NO.Chave);
-        //ImprimeIndice(A->NO.listaIndiceInvertido);
-    }
-    else{
+    if(!EExterno(A)){
         if(A->NO.NInterno.Esq != NULL)ImprimeEmOrdem(A->NO.NInterno.Esq);
         if(A->NO.NInterno.Dir != NULL)ImprimeEmOrdem(A->NO.NInterno.Dir);
+    }
+    else{
+        printf("\n%s", A->NO.Chave);
+        //ImprimeIndice(A->NO.listaIndiceInvertido)
     }
 }
