@@ -56,7 +56,7 @@ Aptd_Pat CriaNoInt(short i, Aptd_Pat *Esq, Aptd_Pat *Dir, char Caractere){
     N->NO.NInterno.Dir = *Dir;
     N->NO.NInterno.Index = i;
     N->NO.NInterno.Caractere = Caractere;
-    printf("Crinando um nó interno\n");
+    printf("Criando um nó interno\n");
     //printf("Indice: %d\n",N->NO.NInterno.Index);
     //printf("Caracter: %c\n",N->NO.NInterno.Caractere);
     return N;
@@ -72,7 +72,7 @@ Aptd_Pat CriaNoExt(String S, int idDoc){
     strcpy(N->NO.Chave, S);
     //InsereLista(idDoc, &lista);
     //N->NO.listaIndiceInvertido = lista;
-    printf("Crinando um nó Externo\n");
+    printf("Criando um nó externo\n");
     //printf("Chave: %s\n", N->NO.Chave);
     return N;
 }
