@@ -116,6 +116,7 @@ Aptd_Pat InsereEntre(String S, Aptd_Pat *A, int i, int idDoc){
         }
     }
 }
+
 int retornaMaior(char index, char caractere){
     //printf("%c ", index);
     //printf("%c\n", caractere);

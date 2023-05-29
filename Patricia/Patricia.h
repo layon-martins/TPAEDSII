@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../Indice_Invertido/IndiceInvertido.h"
 
 #define TRUE 1
 #define FALSE 0

@@ -6,7 +6,7 @@ short VerificaId(Lista_Indice ListaId, int IdDoc){
     else return 0;
 }
 //Colocar no tad indice invertido.h
-short VerificaId(Apontador ListaId, int IdDoc);
+short VerificaId(Lista_Indice ListaId, int IdDoc);
 
 //Colocar no tad Patricia.c
 int qtdTermosTexto(Aptd_Pat A, int idDoc){
