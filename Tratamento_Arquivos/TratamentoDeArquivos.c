@@ -1,3 +1,4 @@
+
 /* Trabalho Prático 1 - Disciplina AEDS 2 - UFV CAF
  * Integrantes:
  * Ana Carolina Fernandes - 5094
@@ -5,6 +6,9 @@
  * Jéssica Cristina Carvalho - 4686
  * Layon Fonseca Martins - 4220
 */
+
+
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,7 +18,7 @@
 #include "TratamentoDeArquivos.h"
 #include "../Patricia/Patricia.h"
 
-void lerPalavras(Aptd_Pat *A) {
+void lerPalavras(Aptd_Pat *A){
 
   FILE *entrada = fopen("entrada.txt", "r");
   FILE *arquivo;
@@ -25,10 +29,10 @@ void lerPalavras(Aptd_Pat *A) {
 
 
   if(entrada == NULL){
-		printf("Nao foi possivel abrir o arquivo de entrada\n");
-	} else {
+		printf("Não foi possível abrir o arquivo de entrada\n");
+	}
+  else {
     fscanf(entrada, "%d\n", &N);
-
     int *vetorIdDoc = (int*) malloc(N * sizeof(int)); 
 
     for(int i = 0;i<N;i++){
@@ -39,14 +43,13 @@ void lerPalavras(Aptd_Pat *A) {
         fscanf(entrada, "%s", nomeArq); 
         arquivo = fopen(nomeArq, "r");
         idDoc = vetorIdDoc[i] + 1;
-      
-
       for (int i = 0; i< N; i++){   
           fscanf(entrada, "%s", nomeArq); 
           arquivo = fopen(nomeArq, "r");
           if(arquivo == NULL){
             printf("Nao foi possivel abrir o arquivo\n");
-          } else {
+          }
+          else {
             while (!feof(arquivo)){
               fscanf(arquivo, "%s", palavra); 
               tratamentoDePalavras(palavra);
