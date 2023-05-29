@@ -28,12 +28,11 @@ void InsereLista(int idDoc, Lista_Indice *lista){
     lista->ultimo->proximo = NULL;
 }
 
-void ImprimeIndice(Lista_Indice lista){
+void ImprimeIndice(char *Palavra, Lista_Indice lista){
     Apontador aux;
     aux = lista.primeiro->proximo;
-    while(aux != NULL){
-        printf("Quantidade: %d\n", aux->quantidade);
-        printf("idDoc: %d\n", aux->idDocumento);
+    while(aux != NULL && (strlen(Palavra)> 0)){
+        printf("%s <%d, %d>\n", Palavra, aux->quantidade, aux->idDocumento);
         aux = aux->proximo;
     }
 }

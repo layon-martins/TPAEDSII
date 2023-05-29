@@ -29,7 +29,7 @@ void FLVazia(Lista_Indice *lista);
 
 void InsereLista(int idDoc, Lista_Indice *lista);
 
-void ImprimeIndice(Lista_Indice lista);
+void ImprimeIndice(char *Palavra, Lista_Indice lista);
 
 void IncrementaQuantidade(int idDoc, Lista_Indice lista);
 

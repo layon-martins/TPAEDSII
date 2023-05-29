@@ -68,7 +68,7 @@ Aptd_Pat CriaNoExt(String S, int idDoc){
     strcpy(N->NO.NExterno.Chave, S);
     InsereLista(idDoc, &lista);
     N->NO.NExterno.listaIndiceInvertido = lista;
-    printf("NO EXTERNO: %s\n", N->NO.NExterno.Chave);
+    //printf("NO EXTERNO: %s\n", N->NO.NExterno.Chave);
     return N;
 }
 
@@ -166,8 +166,8 @@ void ImprimeEmOrdem(Aptd_Pat A){
         return;
     }
     if(A->nt == Externo){
-        printf("Palavra: %s \n",A->NO.NExterno.Chave);
-        ImprimeIndice(A->NO.NExterno.listaIndiceInvertido);
+        //printf("Palavra: %s \n",A->NO.NExterno.Chave);
+        ImprimeIndice(A->NO.NExterno.Chave, A->NO.NExterno.listaIndiceInvertido);
         
         //função para imprimir indice invertido
     }
