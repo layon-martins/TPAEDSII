@@ -18,7 +18,7 @@
 #include "TratamentoDeArquivos.h"
 #include "../Patricia/Patricia.h"
 
-void lerPalavras(Aptd_Pat *A){
+void lerPalavras(Aptd_Pat *A) {
 
   FILE *entrada = fopen("entrada.txt", "r");
   FILE *arquivo;
@@ -29,40 +29,39 @@ void lerPalavras(Aptd_Pat *A){
 
 
   if(entrada == NULL){
-		printf("Não foi possível abrir o arquivo de entrada\n");
-	}
-  else {
+		printf("Nao foi possivel abrir o arquivo de entrada\n");
+	} else {
     fscanf(entrada, "%d\n", &N);
+
     int *vetorIdDoc = (int*) malloc(N * sizeof(int)); 
 
-    for(int i = 0;i<N;i++){
+    for(int i = 0; i<N; i++){
         vetorIdDoc[i] = i;
     }
+ 
+    fscanf(entrada, "%s", nomeArq); 
+    arquivo = fopen(nomeArq, "r");
 
-    for (int i = 0; i< N; i++){   
+    for (int i = 0; i< N; i++){ 
+        idDoc = vetorIdDoc[i] + 1; 
         fscanf(entrada, "%s", nomeArq); 
         arquivo = fopen(nomeArq, "r");
-        idDoc = vetorIdDoc[i] + 1;
-      for (int i = 0; i< N; i++){   
-          fscanf(entrada, "%s", nomeArq); 
-          arquivo = fopen(nomeArq, "r");
-          if(arquivo == NULL){
-            printf("Nao foi possivel abrir o arquivo\n");
-          }
-          else {
-            while (!feof(arquivo)){
-              fscanf(arquivo, "%s", palavra); 
-              tratamentoDePalavras(palavra);
+        if(arquivo == NULL){
+          printf("Nao foi possivel abrir o arquivo\n");
+        } else {
+          while (!feof(arquivo)){
+            fscanf(arquivo, "%s", palavra); 
+            tratamentoDePalavras(palavra);
                 
-              *A = InserePatricia(palavra, A, idDoc);
-            }
-            fclose(arquivo);
+            *A = InserePatricia(palavra, A, idDoc);
           }
-      }
-      fclose(entrada);
+          fclose(arquivo);
+        }
     }
+    fclose(entrada);
   }
 }
+
 
 void tratamentoDePalavras(char *palavra){
   int i;  
