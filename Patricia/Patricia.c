@@ -147,17 +147,17 @@ Aptd_Pat *AchaNoExterno(Aptd_Pat *A){
     return A;
 }
 
-//Retorna NULL quando o no externo onde ela deveria estar tem uma palavra diferente
-//Retorna o no quando a palavra esta la
+//Retorna NULL quando o nó externo onde ela está tem uma palavra diferente
+//Retorna o nó quando a palavra esta lá
 Aptd_Pat Pesquisa(String S, Aptd_Pat A){
     if(EExterno(A)){
-        if(strcmp(S, A->NO.NExterno.Chave))
+        if(strcmp(S, A->NO.NExterno.Chave) != 0)
             return NULL;
         return A;
     }
     if(ComparaLetra(A->NO.NInterno.Index, A->NO.NInterno.Caractere, S))
-        return Pesquisa(S, A->NO.NInterno.Dir);
-    return Pesquisa(S, A->NO.NInterno.Esq);
+        return Pesquisa(S, A->NO.NInterno.Esq);
+    return Pesquisa(S, A->NO.NInterno.Dir);
 }
 
 void ImprimeEmOrdem(Aptd_Pat A){
