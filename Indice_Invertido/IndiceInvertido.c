@@ -31,6 +31,7 @@ void InsereLista(int idDoc, Lista_Indice *lista){
 void ImprimeIndice(Lista_Indice lista){
     Apontador aux;
     aux = lista.primeiro->proximo;
+    
     while(aux != NULL){
         printf("<%d, %d>\n", aux->quantidade, aux->idDocumento);
         aux = aux->proximo;

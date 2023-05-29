@@ -39,12 +39,13 @@ void lerPalavras(Aptd_Pat *A) {
         vetorIdDoc[i] = i;
     }
  
-    fscanf(entrada, "%s", nomeArq); 
-    arquivo = fopen(nomeArq, "r");
+    // fscanf(entrada, "%s", nomeArq); 
+    // arquivo = fopen(nomeArq, "r");
 
     for (int i = 0; i< N; i++){ 
         idDoc = vetorIdDoc[i] + 1; 
         fscanf(entrada, "%s", nomeArq); 
+        printf("Arq: %s \n", nomeArq);
         arquivo = fopen(nomeArq, "r");
         if(arquivo == NULL){
           printf("Nao foi possivel abrir o arquivo\n");
@@ -52,7 +53,6 @@ void lerPalavras(Aptd_Pat *A) {
           while (!feof(arquivo)){
             fscanf(arquivo, "%s", palavra); 
             tratamentoDePalavras(palavra);
-                
             *A = InserePatricia(palavra, A, idDoc);
           }
           fclose(arquivo);
