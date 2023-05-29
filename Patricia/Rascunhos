@@ -10,7 +10,7 @@ short VerificaId(Lista_Indice ListaId, int IdDoc);
 
 //Colocar no tad Patricia.c
 int qtdTermosTexto(Aptd_Pat A, int idDoc){
-    if (A->nt==Externo)return VerificaId(&(*A)->NO.NoExterno.listaIndiceInvertido,IdDoc);
+    if (A->nt==Externo)return VerificaId(&(*A)->NO.NExterno.listaIndiceInvertido,IdDoc);
     return qtdTermosTexto(&(*A)->NO.NInterno.Dir, int idDoc)+qtdTermosTexto(&(*A)->NO.NInterno.Esq, int idDoc);
 }
 //Colocar no tad Patricia.h
