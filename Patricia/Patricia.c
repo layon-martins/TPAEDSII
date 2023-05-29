@@ -166,10 +166,11 @@ void ImprimeEmOrdem(Aptd_Pat A){
         return;
     }
     if(A->nt == Externo){
-        //printf("Palavra: %s \n",A->NO.NExterno.Chave);
-        ImprimeIndice(A->NO.NExterno.Chave, A->NO.NExterno.listaIndiceInvertido);
-        
-        //função para imprimir indice invertido
+        if(strlen(A->NO.NExterno.Chave)>0){
+            printf("Palavra: %s \n",A->NO.NExterno.Chave);
+            //ImprimeIndice(A->NO.NExterno.listaIndiceInvertido);
+
+        }
     }
     else{
         ImprimeEmOrdem(A->NO.NInterno.Esq);
