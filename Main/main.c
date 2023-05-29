@@ -13,7 +13,7 @@ int main(){
     Aptd_Pat A = NULL;
 
     lerPalavras(&A);
-    ImprimeEmOrdem(A);
+    //ImprimeEmOrdem(A);
     
 
     return 0;

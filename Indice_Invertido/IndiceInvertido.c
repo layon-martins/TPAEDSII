@@ -33,6 +33,7 @@ void ImprimeIndice(Lista_Indice lista){
 void IncrementaQuantidade(int idDoc, Lista_Indice lista){
     Apontador aux;
     aux = lista.primeiro->proximo;
+    //printf("Entrou aqui");
     while(aux != NULL){
         if(aux->idDocumento == idDoc)
             aux->quantidade = aux->quantidade + 1;
@@ -43,6 +44,6 @@ void IncrementaQuantidade(int idDoc, Lista_Indice lista){
         palavra já existe na árvore se o idDoc não for o mesmo ao percorrer para incrementar a quantidade 
         precisa-se criar a célula com o novo idDoc
     */
-    //InsereLista(idDoc, &lista); 
+    InsereLista(idDoc, &lista); 
 
 }

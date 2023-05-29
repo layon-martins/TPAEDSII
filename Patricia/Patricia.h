@@ -33,8 +33,10 @@ typedef struct NoPatricia{
             char Caractere;
             Aptd_Pat Esq, Dir;
         }NInterno;
-        String Chave;
-        //Lista_Indice listaIndiceInvertido;
+        struct{
+            Lista_Indice listaIndiceInvertido;
+            String Chave;
+        }NExterno;
     }NO;
     
 }NoPatricia;

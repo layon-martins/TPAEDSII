@@ -44,7 +44,7 @@ char AchaLetra(Aptd_Pat *A, int i, String Palavra){
         }
         else A = &(*A)->NO.NInterno.Esq;
     }
-    if(ComparaLetra(i, (*A)->NO.Chave[i], Palavra))return (*A)->NO.Chave[i];
+    if(ComparaLetra(i, (*A)->NO.NExterno.Chave[i], Palavra))return (*A)->NO.NExterno.Chave[i];
     return Palavra[i];
 }
 
@@ -56,73 +56,108 @@ Aptd_Pat CriaNoInt(short i, Aptd_Pat *Esq, Aptd_Pat *Dir, char Caractere){
     N->NO.NInterno.Dir = *Dir;
     N->NO.NInterno.Index = i;
     N->NO.NInterno.Caractere = Caractere;
-    printf("Criando um nó interno\n");
-    //printf("Indice: %d\n",N->NO.NInterno.Index);
-    //printf("Caracter: %c\n",N->NO.NInterno.Caractere);
+    printf("Indice: %d Caracter: %c \n",N->NO.NInterno.Index, N->NO.NInterno.Caractere);
     return N;
 }
 
 Aptd_Pat CriaNoExt(String S, int idDoc){
     //printf("CHAVE %s\n", S);
     Aptd_Pat N;
-    //Lista_Indice lista;
-    //FLVazia(&lista);
+    Lista_Indice lista;
+    FLVazia(&lista);
     N = (Aptd_Pat)malloc(sizeof(NoPatricia));
     N->nt = Externo;
-    strcpy(N->NO.Chave, S);
-    //InsereLista(idDoc, &lista);
-    //N->NO.listaIndiceInvertido = lista;
-    printf("Criando um nó externo\n");
-    //printf("Chave: %s\n", N->NO.Chave);
+    N->NO.NExterno.listaIndiceInvertido = lista;
+    //ImprimeIndice(N->NO.listaIndiceInvertido);
+    strcpy(N->NO.NExterno.Chave, S);
+    InsereLista(idDoc, &lista);
+    //printf("Criando um nó externo\n");
+    printf("Chave: %s\n", N->NO.NExterno.Chave);
     return N;
 }
 
 Aptd_Pat InsereEntre(String S, Aptd_Pat *A, int i, int idDoc){
-    Aptd_Pat p;//Apontador auxiliar que recebera o endereco do no externo criado para a palavra a ser inserida
+    Aptd_Pat p;
     if(EExterno(*A) || i < (*A)->NO.NInterno.Index){
-        p = CriaNoExt(S,idDoc);
+        //printf("i : %d Index %d\n", i, (*A)->NO.NInterno.Index);
+        //printf("String 3: %s\n", S);
+        p = CriaNoExt(S, idDoc);
+
         if(EExterno(*A)){
-                //printf("CAR: %c\n",(*A)->NO.Chave[i]);
-            if(ComparaLetra(i, (*A)->NO.Chave[i], S)){
-                //printf("Indice que se difere: %d\n", i);
-                return(CriaNoInt(i, A, &p, S[i]));
+            //printf(" NO EXTERNO: %s\n", (*A)->NO.NExterno.Chave);
+            if((*A)->NO.NExterno.Chave[i] < p->NO.NExterno.Chave[i]){
+                return CriaNoInt(i, A, &p, (*A)->NO.NExterno.Chave[i]);
+            }else{
+                return CriaNoInt(i, &p, A, p->NO.NExterno.Chave[i]);
             }
-            return (CriaNoInt(i, &p, A, (*A)->NO.Chave[i]));
+        }else{
+            printf("String 5\n");
+            Aptd_Pat aux;
+            aux = (*A);
+            while(!EExterno(aux))
+                aux = aux->NO.NInterno.Esq;
+
+            printf("Aux: %c P: %c\n", aux->NO.NExterno.Chave[i], p->NO.NExterno.Chave[i]);
+            if(aux->NO.NExterno.Chave[i] < p->NO.NExterno.Chave[i]){
+                printf("Entrou aqui\n");
+                return CriaNoInt(i, A, &p, aux->NO.NExterno.Chave[i]);
+            }else{
+                printf("nao entrou aqui\n");
+                return CriaNoInt(i, &p, A, p->NO.NExterno.Chave[i]);
+            }
         }
-        if(AchaLetra(A, i, S) == S[i])return(CriaNoInt(i, &p, A, S[i]));
-        return (CriaNoInt(i, A, &p, AchaLetra(A, i, S)));
+    }else{
+        if(S[(*A)->NO.NInterno.Index] < (*A)->NO.NInterno.Caractere){
+            printf("Entrou aqui 1\n");
+            (*A)->NO.NInterno.Dir = InsereEntre(S, &(*A)->NO.NInterno.Dir, i, idDoc);
+        }else{
+            printf("Entrou aqui 2\n");
+            (*A)->NO.NInterno.Esq = InsereEntre(S, &(*A)->NO.NInterno.Esq, i, idDoc);
+        }
     }
-    if(ComparaLetra((*A)->NO.NInterno.Index, (*A)->NO.NInterno.Caractere, S)){
-        (*A)->NO.NInterno.Dir = InsereEntre(S, &(*A)->NO.NInterno.Dir, i, idDoc);
-    }
-    (*A)->NO.NInterno.Esq = InsereEntre(S, &(*A)->NO.NInterno.Esq, i, idDoc);
-    return (*A);
 }
-
+int retornaMaior(char index, char caractere){
+    //printf("%c ", index);
+    //printf("%c\n", caractere);
+    if(index <= caractere){
+        return 0;
+    }else{
+        return 1;
+    }
+}
 Aptd_Pat InserePatricia(String S, Aptd_Pat *t, int idDoc){
-    Aptd_Pat *p;
+    Aptd_Pat p;
+    //printf("String: %s\n", S);
+    //printf("Tamanho da palavra: %ld\n", strlen(S));
     int i;
-    if(*t == NULL)return (CriaNoExt(S, idDoc));
-    p = t;//Ponteiro auxiliar recebe ponteiro da arvore
-    while(!EExterno(*p)){
-
-        if(strlen(S) < (*p)->NO.NInterno.Index)p = AchaNoExterno(p);
-        else{
-            if(ComparaLetra((*p)->NO.NInterno.Index, (*p)->NO.NInterno.Caractere, S)){
-                p = &(*p)->NO.NInterno.Esq;
-            }else 
-                p = &(*p)->NO.NInterno.Dir;
+    if(*t==NULL)
+        return CriaNoExt(S, idDoc);
+    else{
+        p = *t;
+        while(!EExterno(p)){
+            if(retornaMaior(S[p->NO.NInterno.Index], p->NO.NInterno.Caractere)== 1){
+                //printf("Index é maior\n");
+                p = p->NO.NInterno.Dir;
+            }
+            else{
+                //printf("Caractere é maior\n");
+                p = p->NO.NInterno.Esq;
+            }
         }
-    }
-    i = ComparaChaves((*p)->NO.Chave, S);
-    if(strlen((*p)->NO.Chave) == strlen(S)){
-        if(i == strlen((*p)->NO.Chave)){ //Aqui vemos que a palavra ja existe na arvore
-            //momento de incrementar lista de indice invertido
-        return (*t);
+        i = 0;
+        //printf(" String - %s\n NO - %s\n", S, p->NO.NExterno.Chave);
+        while((i<=strlen(S)) & (S[i]) == (p->NO.NExterno.Chave[i])){
+            //printf("Caractere da string: %c\nCaractere no NO: %c \n", S[i], p->NO.NExterno.Chave[i]);
+            i++;
         }
+        //printf("String %s i : %d Compara: %c\n",S, i, p->NO.NExterno.Chave[i]);
+        if(i == strlen(S)){
+            printf("Entrou aqui\n");
+            IncrementaQuantidade(idDoc, (p->NO.NExterno.listaIndiceInvertido));
+            return(*t);
+        }else
+            return (InsereEntre(S, t, i, idDoc));
     }
-    return (InsereEntre(S, t, i, idDoc));;
-    
 }
 
 //Retorna o no externo contendo a chave a se comparar com a palavra
@@ -135,7 +170,7 @@ Aptd_Pat *AchaNoExterno(Aptd_Pat *A){
 //Retorna o no quando a palavra esta la
 Aptd_Pat Pesquisa(String S, Aptd_Pat A){
     if(EExterno(A)){
-        if(strcmp(S, A->NO.Chave))
+        if(strcmp(S, A->NO.NExterno.Chave))
             return NULL;
         return A;
     }
@@ -149,11 +184,11 @@ void ImprimeEmOrdem(Aptd_Pat A){
         printf("\nArvore vazia.");
         return;
     }
+    ImprimeEmOrdem(A->NO.NInterno.Esq);
     if(EExterno(A)){
-        printf("\n %s\n", (A)->NO.Chave);
+        printf("\n %s\n", (A)->NO.NExterno.Chave);
     }
     else{
-        ImprimeEmOrdem(A->NO.NInterno.Esq);
         ImprimeEmOrdem(A->NO.NInterno.Dir);
     }
 }
