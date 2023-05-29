@@ -193,3 +193,19 @@ void ImprimeEmOrdem(Aptd_Pat A){
         ImprimeEmOrdem(A->NO.NInterno.Dir);
     }
 }
+
+
+void ImprimeEmOrdem2(Aptd_Pat A){
+    if(A == NULL){
+        printf("\nArvore vazia.");
+        return;
+    }
+    if(A->nt == Externo){
+        printf("%-15s ",no->NO.NExterno.Chave);
+        //função para imprimir indice invertido
+    }
+    else{
+        ImprimeEmOrdem(no->NO.NInterno.Esq);
+        ImprimeEmOrdem(no->NO.NInterno.Dir);
+    }
+}
