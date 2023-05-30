@@ -5,3 +5,13 @@
  * Bárbara Pagnocca - 5061
  * Jéssica Cristina Carvalho - 4686
  * Layon Fonseca Martins - 4220
+
+A versão do Gtk instalado em sua máquina deve ser a versão para devs 3.0 ou superior.
+
+Caso queira instalar no Ubuntu e derivados: sudo apt-get install libgtk-3-dev
+
+Para executar o programa, é necessário digitar o comando 'make' no terminal na pasta TPAEDSII .
+
+Os arquivos de entrada que você deseje utilizar para testar devem estar localizados no mesmo nível que nossos arquivos de exemplo disponibilizados.
+
+Por favor renomeie seu arquivo de entrada para "entrada.txt"

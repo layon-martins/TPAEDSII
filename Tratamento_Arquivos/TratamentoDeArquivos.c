@@ -18,15 +18,14 @@
 #include "TratamentoDeArquivos.h"
 #include "../Patricia/Patricia.h"
 
-void lerPalavras(Aptd_Pat *A) {
 
+void lerPalavras(Aptd_Pat *A) {
   FILE *entrada = fopen("entrada.txt", "r");
   FILE *arquivo;
   int N = 0;
   int idDoc;
   char nomeArq[50];
   char palavra[50];
-
 
   if(entrada == NULL){
 		printf("Nao foi possivel abrir o arquivo de entrada\n");
@@ -38,9 +37,6 @@ void lerPalavras(Aptd_Pat *A) {
     for(int i = 0; i<N; i++){
         vetorIdDoc[i] = i;
     }
- 
-    // fscanf(entrada, "%s", nomeArq); 
-    // arquivo = fopen(nomeArq, "r");
 
     for (int i = 0; i< N; i++){ 
         idDoc = vetorIdDoc[i] + 1; 
