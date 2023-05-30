@@ -53,3 +53,15 @@ void IncrementaQuantidade(int idDoc, Lista_Indice lista){
     */
     InsereLista(idDoc, &lista); 
 }
+
+short VerificaId(Lista_Indice *ListaId, int IdDoc){
+    while (ListaId->primeiro != NULL)
+    {
+        if(ListaId->primeiro->idDocumento == IdDoc){
+            return 1;
+        }
+        ListaId->primeiro = ListaId->primeiro->proximo;
+    }
+    return 0;
+    
+}

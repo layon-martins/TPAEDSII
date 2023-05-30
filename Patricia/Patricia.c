@@ -177,3 +177,10 @@ void ImprimeEmOrdem(Aptd_Pat A){
         ImprimeEmOrdem(A->NO.NInterno.Dir);
     }
 }
+
+int qtdTermosTexto(Aptd_Pat A, int idDoc){
+    if (A->nt == Externo){
+      return VerificaId(&(A->NO.NExterno.listaIndiceInvertido),idDoc);
+    } 
+    return qtdTermosTexto(A->NO.NInterno.Esq, idDoc) + qtdTermosTexto(A->NO.NInterno.Dir, idDoc);
+}

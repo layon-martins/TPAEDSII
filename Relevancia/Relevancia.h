@@ -11,8 +11,6 @@
 
 #include "../Patricia/Patricia.h"
 
-// calcula a relevância de cada arquivo para a busca
-void relevancia(int *vRelevancia, Aptd_Pat *A, int N, String *termos, int quantT);
 
-//função auxiliar da relevância, calcula o termo Wij
-float peso(int arq, Aptd_Pat A, int N, String *termos, int quantT);
+void relevancia(float *vRelevancia, Aptd_Pat *A, int N, String *termos, int quantT);
+float peso(int arq, Aptd_Pat *A, int N, String *termos, int quantT);

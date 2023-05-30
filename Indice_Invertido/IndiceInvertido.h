@@ -33,5 +33,6 @@ void ImprimeIndice(Lista_Indice lista);
 
 void IncrementaQuantidade(int idDoc, Lista_Indice lista);
 
+short VerificaId(Lista_Indice *ListaId, int IdDoc);
 
 #endif

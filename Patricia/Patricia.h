@@ -54,5 +54,6 @@ boolean ComparaLetra(int i, char letra, String S);
 int Indice(String S, String P, int tam);
 int ComparaChaves(String S, String P);
 void ImprimeEmOrdem(Aptd_Pat A);
+int qtdTermosTexto(Aptd_Pat A, int idDoc);
 
 #endif
